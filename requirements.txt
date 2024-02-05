@@ -1,6 +1,9 @@
 matplotlib
-pytorch
-pyspark
+torch
+torchvision
+torchaudio
+pyspark == 3.5.0
 findspark
 pandas
 pytest
+jupyterlab
