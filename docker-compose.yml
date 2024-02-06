@@ -5,7 +5,7 @@ x-spark-common: &spark-common
   volumes:
     - ./notebooks:/opt/notebooks
   networks:
-    - airflow-network
+    - jupyter-network
 
 services:
   jupyterlab:
@@ -16,6 +16,8 @@ services:
       - "8888:8888"
     volumes:
       - ./notebooks:/opt/notebooks
+    networks:
+      - jupyter-network
 
   spark-master:
     <<: *spark-common
@@ -41,4 +43,4 @@ services:
       - SPARK_MASTER_URL= spark://spark-master:7077
 
 networks:
-  airflow-network:
+  jupyter-network:
