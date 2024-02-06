@@ -23,9 +23,7 @@ services:
     <<: *spark-common
     command: bin/spark-class org.apache.spark.deploy.master.Master
     ports:
-      - "4040:4040"
-      - "8080:8080"
-      - "4041:40401"
+      - "9090:8080"
       - "7077:7077"
     environment:
       - SPARK_LOCAL_IP=spark-master
