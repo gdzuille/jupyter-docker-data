@@ -4,6 +4,8 @@ FROM openjdk:${debian_buster_image_tag}
 ARG workspace=/opt/workspace
 ARG Python=3.11.3
 
+ENV PYSPARK_PYTHON=/usr/local/bin/python3.11
+
 RUN mkdir -p ${workspace} && \
     apt-get update -y && \
     apt-get install -y --fix-missing curl gcc build-essential zlib1g-dev libncurses5-dev libsqlite3-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget libjpeg-dev && \
