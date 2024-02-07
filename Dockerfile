@@ -2,17 +2,19 @@ ARG debian_buster_image_tag=8-jre-slim
 FROM openjdk:${debian_buster_image_tag}
 
 ARG workspace=/opt/workspace
+ARG Python=3.11.3
 
 RUN mkdir -p ${workspace} && \
     apt-get update -y && \
-	apt install -y curl gcc &&\ 
-	apt install -y build-essential zlib1g-dev libncurses5-dev && \
-	apt install -y libsqlite3-dev && \
-	apt install -y libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget libjpeg-dev && \
-	curl -O https://www.python.org/ftp/python/3.8.10/Python-3.8.10.tar.xz  && \
-    tar -xf Python-3.8.10.tar.xz && cd Python-3.8.10 && ./configure && make -j 8 &&\
+    apt-get install -y --fix-missing curl gcc build-essential zlib1g-dev libncurses5-dev libsqlite3-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget libjpeg-dev && \
+    curl -O https://www.python.org/ftp/python/${Python}/Python-${Python}.tgz && \
+    tar xzf Python-${Python}.tgz && \
+    cd Python-${Python} && \
+    ./configure && \
+    make -j 8 && \
     make install && \
-    apt-get update && apt-get install -y procps && apt-get install -y vim && apt-get install -y net-tools && \
+    apt-get update && \
+    apt-get install -y --fix-missing procps vim net-tools && \
     rm -rf /var/lib/apt/lists/*
 
 ENV workspace=${workspace}
