@@ -25,7 +25,7 @@ VOLUME ${workspace}
 COPY ./requirements.txt /tmp
 
 RUN apt-get update -y && \
-    #apt-get install -y python3-pip && \
+    apt-get install -y python3-pip && \
     apt-get clean
 
 # Install required packages
