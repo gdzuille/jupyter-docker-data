@@ -2,9 +2,7 @@ ARG debian_buster_image_tag=8-jre-slim
 FROM openjdk:${debian_buster_image_tag}
 
 ARG workspace=/opt/workspace
-ARG Python=3.11.3
-
-ENV PYSPARK_PYTHON=/usr/local/bin/python3.11
+ARG Python=3.11.7
 
 RUN mkdir -p ${workspace} && \
     apt-get update -y && \
@@ -27,7 +25,7 @@ VOLUME ${workspace}
 COPY ./requirements.txt /tmp
 
 RUN apt-get update -y && \
-    apt-get install -y python3-pip && \
+    #apt-get install -y python3-pip && \
     apt-get clean
 
 # Install required packages
