@@ -34,6 +34,8 @@ services:
     command: bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077
     depends_on:
       - spark-master
+    ports:
+      - "8081:8081"
     environment:
       - SPARK_MODE=worker
       - SPARK_WORKER_CORES=2

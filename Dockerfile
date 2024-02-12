@@ -2,7 +2,7 @@ ARG debian_buster_image_tag=8-jre-slim
 FROM openjdk:${debian_buster_image_tag}
 
 ARG workspace=/opt/workspace
-ARG Python=3.11.7
+ARG Python=3.11.2
 
 RUN mkdir -p ${workspace} && \
     apt-get update -y && \
@@ -25,11 +25,10 @@ VOLUME ${workspace}
 COPY ./requirements.txt /tmp
 
 RUN apt-get update -y && \
-    apt-get install -y python3-pip && \
     apt-get clean
 
 # Install required packages
-RUN pip install --no-cache-dir -r /tmp/requirements.txt
+RUN pip3 install --no-cache-dir -r /tmp/requirements.txt
 
 EXPOSE 8888
 WORKDIR ${workspace}
