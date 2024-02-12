@@ -18,6 +18,10 @@ Build on Python 3.8.10
 docker-compose up -d --build
 ```
 
+## Jupyter notebook web server
+For accessing jupyter notebook web server, go to [localhost:8888]<localhost:8888>.
+As an example, check the *demo.ipynb* file.
+
 ## Starting the Spark Session
 For starting the Spark Session on the notebook, start by adding the following code:
 
